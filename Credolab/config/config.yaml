@@ -1,0 +1,134 @@
+# -------------------------------------------------------------------
+# Default & Anchor Definitions
+# -------------------------------------------------------------------
+
+# Default values for credolab_api, using an anchor
+default_credolab_api: &default_credolab_api
+  timeout: 30
+  max_retries: 3
+  batch_size: 50
+  api_codes:
+    - "appsInfo"
+    - "deviceInfo"
+    - "ipInfo"
+    - "lastApps"
+    - "permissions"
+    - "riskyApps"
+    - "velocity"
+    - "fraudAlerts"
+    - "typing"
+    - "uiInteractions"
+    - "fingerGestures"
+    - "touchActions"
+    - "anomaly"
+    - "expertScore"
+
+# Default values for pubsub, using an anchor
+default_pubsub: &default_pubsub
+  batch_topic: "credolab"
+  credolab_topic: "credolab"
+  anonymization_topic: "anonymization"
+  
+# Default configuration for all other shared settings
+default: &default
+  gcp:
+    location: "us-central1"
+
+  bigquery:
+    raw_vmb_dataset: "RAW_VMB_DATASET"
+    raw_hes_dataset: "RAW_HES_DATASET"
+    trans_hes_dataset: "TRANS_HES_DATASET"
+    raw_edep_dataset: "RAW_EDEP_DATASET"
+    trans_edep_dataset: "TRANS_EDEP_DATASET"
+    log_dataset: "LOG_DATASET"
+    api_dataset: "API_DATASET"
+    vmb_credolab_table: "CREDOLAB_DATA"
+    hes_customer_table: "CUSTOMER"
+    hes_application_table: "APPLICATION"
+    credolab_android_table: "CREDOLAB_DATA_ANDROID"
+    credolab_ios_table: "CREDOLAB_DATA_iOS"
+    credolab_failed_retry_table: "CREDOLAB_FAILED_RETRY_LIST"
+    credolab_trans_android_table: "TMP_CREDOLAB_DATA_ANDROID"
+    credolab_trans_ios_table: "TMP_CREDOLAB_DATA_iOS"
+    flow_log_table: "FLOW_LOG"
+    api_log_table: "API_LOG"
+
+  gcs:
+    blob_path: "EDEP/CREDOLAB"
+
+  logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  cloud_run:
+    timeout: 3600
+    batch_processing_enabled: true
+
+# -------------------------------------------------------------------
+# Environment-Specific Configurations
+# -------------------------------------------------------------------
+
+vn-loancloudmvp-data:
+  <<: *default
+  gcp:
+    project_id: "vn-loancloudmvp-data"
+  gcs:
+    bucket_name: "vn-loancloudmvp-data-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "vn-loancloudmvp-data"
+  credolab_api:
+    <<: *default_credolab_api
+    base_url: "https://scoring-demo.credolab.com"
+    qpm_limit: 30
+
+ovs-lx-vdo-01-ut-6869fc:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-ut-6869fc"
+  gcs:
+    bucket_name: "ovslxvdo01-ut-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-ut-6869fc"
+  credolab_api:
+    <<: *default_credolab_api
+    base_url: "https://scoring-demo.credolab.com"
+    secret_version_name: "projects/530891076352/secrets/dskovslxvdo01g07/versions/latest"
+    proxies:
+      https: "http://10.171.21.2:8080"
+    qpm_limit: 30
+
+ovs-lx-vdo-01-uat-d545f3:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-uat-d545f3"
+  gcs:
+    bucket_name: "ovslxvdo01-uat-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-uat-d545f3"
+  credolab_api:
+    <<: *default_credolab_api
+    base_url: "https://scoring-demo.credolab.com"
+    secret_version_name: "projects/744120031951/secrets/tskovslxvdo01g07/versions/latest"
+    proxies:
+      https: "http://10.171.53.2:8080"
+    qpm_limit: 30
+
+ovs-lx-vdo-01-prod-d27767:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-prod-d27767"
+  gcs:
+    bucket_name: "ovslxvdo01-prod-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-prod-d27767"
+  credolab_api:
+    <<: *default_credolab_api
+    base_url: "https://scoring.credolab.com"
+    secret_version_name: "projects/600357811838/secrets/pskovslxvdo01g07/versions/latest"
+    proxies:
+      https: "http://10.171.85.2:8080"
+    qpm_limit: 30

@@ -1,0 +1,252 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.8" pages="2">
+  <diagram id="CredoLabFlow" name="CredoLab-Flow">
+    <mxGraphModel dx="1281" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_start_daily" value="" style="rounded=0;html=1;endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_start_daily" target="n_handle_daily" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_start_range" value="" style="rounded=0;html=1;endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_start_range" target="n_handle_range" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_handle_daily_process" style="endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_handle_daily" target="n_process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_handle_range_process" style="endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_handle_range" target="n_process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_process_is_range" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_process" target="d_is_range" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_is_range_no" value="Daily" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" parent="1" source="d_is_range" target="n_build_context_daily" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_is_range_yes" value="Range" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" parent="1" source="d_is_range" target="n_build_context_range" edge="1">
+          <mxGeometry x="-0.0005" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ctx_daily_generic" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_build_context_daily" target="n_generic" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ctx_range_generic" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_build_context_range" target="n_generic" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_generic_loader" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_generic" target="n_loader" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loader_first_decision" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_loader" target="d_is_first" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_first_yes" value="Yes" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_is_first" target="n_first_batch" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_first_no" value="No" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_is_first" target="n_orchestrate" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_first_batch_to_records" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_first_batch" target="n_batch_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_orchestrate_to_records" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_orchestrate" target="n_batch_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_records_loop" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_batch_records" target="n_loop" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loop_single" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_loop" target="n_single_proc" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_single_api_service" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_single_proc" target="n_api_service" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_service_client" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_api_service" target="n_client_call" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_client_call_success_decision" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_client_call" target="d_api_success" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_success_yes" value="2xx" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_api_success" target="n_upload_gcs" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gcs_to_bq" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_upload_gcs" target="n_save_bq" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_success_no" value="non-2xx" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_api_success" target="n_failed_record" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_bq_to_batch_summary" style="endArrow=block;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" target="n_batch_summary" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="1670" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_failed_to_batch_summary" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_failed_record" target="n_batch_summary" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_batch_summary_to_status" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_batch_summary" target="n_batch_status_check" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_status_check_to_decision" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_batch_status_check" target="d_batch_completion" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_completion_more_batches" value="More batches" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_batch_completion" target="n_publish_recall" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_completion_last_batch" value="Last batch" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_batch_completion" target="n_flatten" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_completion_processing" value="Processing" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n_publish_recall" target="n_first_response" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_flatten_to_anonym" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_flatten" target="n_anonym" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_anonym_to_final" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_anonym" target="n_final_response" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n_start_daily" value="POST /" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="270" y="60" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_start_range" value="POST /get_data_range" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="520" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_handle_daily" value="handle_daily_request" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="250" y="160" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_handle_range" value="handle_date_range_request" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="495" y="170" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_process" value="process()" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="400" y="260" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="d_is_range" value="Range?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="405" y="360" width="105" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_build_context_daily" value="Build BatchContext (daily)&lt;br&gt;callback_handler = publish_daily_recall" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="110" y="490" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_build_context_range" value="Build BatchContext (range)&lt;br&gt;callback_handler = publish_range_recall" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="560" y="490" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_generic" value="_process_batch_generic" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="365" y="620" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_loader" value="_load_vmb_data" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="350" y="710" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_is_first" value="First batch?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="393.75" y="810" width="122.5" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_first_batch" value="_initiate_batch_processing" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="80" y="910" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_orchestrate" value="_orchestrate_batch_processing" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="610" y="920" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_batch_records" value="_process_batch_records" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="365" y="1010" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_loop" value="FOR each record" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;shadow=1;fillColor=light-dark(#B2CCAA,#718769);strokeColor=default;fillStyle=auto;fontColor=#ffffff;gradientColor=none;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="385" y="1090" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_single_proc" value="loop: _call_credolab_api" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fillStyle=auto;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="362.5" y="1180" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_api_service" value="get_credolab_insights" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#f2ab78, #e96b12);strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="372.5" y="1270" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_client_call" value="CredolabAPIClient.get_insights" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#f2ab78, #e96b12);strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="352.5" y="1360" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_api_success" value="2xx?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="402.5" y="1450" width="115" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_upload_gcs" value="_batch_upload_to_gcs" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="182.5" y="1540" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_save_bq" value="_batch_insert_to_bigquery" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="160" y="1640" width="235" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_failed_record" value="insert_failed_record" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="550" y="1550" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_batch_summary" value="記錄批次摘要&lt;br&gt;(success/error counts)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="460" y="1640" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_batch_status_check" value="檢查批次狀態&lt;br&gt;(batch_number vs total_batches)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="455" y="1750" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d_batch_completion" value="Batch Status?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="480" y="1850" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n_publish_recall" value="publish_*_recall_message" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="270" y="1980" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_flatten" value="flatten SQLs (android / ios)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="635" y="1980" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_anonym" value="publish_anonymization" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="645" y="2070" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_first_response" value="&lt;b&gt;Response: completed (current batch)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="255" y="2110" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_final_response" value="Response: completed (final)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="625" y="2170" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xgpKMN205KME-nEcck9i-4" value="&lt;span&gt;協調單一批次的處理流程&lt;br&gt;（包含批次範圍計算、記錄處理、狀態管理)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="740" y="990" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xgpKMN205KME-nEcck9i-6" value="Args: reference id / api_codes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="540" y="1280" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xgpKMN205KME-nEcck9i-7" value="50 rows per batch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="555" y="630" width="130" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="CredoLabSchemas" name="CredoLab_Payloads">
+    <mxGraphModel dx="1281" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="schema0" />
+        <mxCell id="schema1" parent="schema0" />
+        <mxCell id="g_schema" value="" style="rounded=1;dashed=1;dashPattern=8 8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;shadow=1;" parent="schema1" vertex="1">
+          <mxGeometry x="50" y="570" width="740" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="t_schema" value="Pub/Sub message schema" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;" parent="g_schema" vertex="1">
+          <mxGeometry x="50" y="18.181818181818176" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_daily" value="daily_recall payload&#xa;{&#xa;  &quot;message_type&quot;: &quot;daily_recall&quot;,&#xa;  &quot;processing_params&quot;: {&#xa;    &quot;batch_number&quot;: &lt;int&gt;,&#xa;    &quot;source&quot;: &quot;daily_job&quot;&#xa;  }&#xa;}&#xa;Attributes:&#xa;  start_date: &quot;&quot;&#xa;  end_date: &quot;&quot;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="g_schema" vertex="1">
+          <mxGeometry x="20" y="109.09" width="330" height="240.91" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_range" value="range_recall payload&#xa;{&#xa;  &quot;message_type&quot;: &quot;range_recall&quot;,&#xa;  &quot;processing_params&quot;: {&#xa;    &quot;start_date&quot;: &lt;YYYY-MM-DD&gt;,&#xa;    &quot;end_date&quot;: &lt;YYYY-MM-DD&gt;,&#xa;    &quot;batch_number&quot;: &lt;int&gt;,&#xa;    &quot;source&quot;: &quot;get_data_range&quot;&#xa;  }&#xa;}&#xa;Attributes:&#xa;  start_date: &lt;YYYY-MM-DD&gt;&#xa;  end_date: &lt;YYYY-MM-DD&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="g_schema" vertex="1">
+          <mxGeometry x="370" y="109.09" width="330" height="240.91" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_anonym" value="anonymization payload&#xa;{&#xa;  &quot;file_list&quot;: [ &lt;PROJECT&gt;.&lt;DATASET&gt;.CREDOLAB_DATA_ANDROID,&#xa;                 &lt;PROJECT&gt;.&lt;DATASET&gt;.CREDOLAB_DATA_iOS ]&#xa;}&#xa;Topic: &quot;anonymization&quot;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="g_schema" vertex="1">
+          <mxGeometry x="20" y="370.00454545454534" width="690" height="99.99999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="note_pubsub" value="Topic: config.pubsub_credolab_topic (daily/range recall)&#xa;Attributes 用於訂閱篩選：Daily 空字串；Range 為實際日期" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="g_schema" vertex="1">
+          <mxGeometry x="50" y="63.63636363636363" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="g_shared" value="" style="rounded=1;dashed=1;dashPattern=8 8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;shadow=1;" parent="schema1" vertex="1">
+          <mxGeometry x="40" y="100" width="740" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="t_shared" value="Shared Payload" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;" parent="g_shared" vertex="1">
+          <mxGeometry x="30" y="20" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_logging" value="LoggingContext (utils.infra_logging.Logging)&lt;br&gt;{&lt;br&gt;  &quot;mission_name&quot;: ,&lt;br&gt;  &quot;log_uuid&quot;: ,&lt;br&gt;  &quot;flow_code&quot;: &quot;E05_credolab&quot;,&lt;br&gt;  &quot;flow_id&quot;: ,&lt;br&gt;  &quot;flow_name&quot;: ,&lt;br&gt;  &quot;date_range&quot;: &lt;br&gt;}&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Structured log 附帶：&lt;br&gt;  service: &quot;credolab-service&quot;, log_type: &quot;flow_log|api_log&quot;, timestamp: &lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="g_shared" vertex="1">
+          <mxGeometry x="20" y="100" width="350" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_batchctx" value="BatchContext (application.batch_process_service.BatchContext)&lt;br&gt;{&lt;br&gt;  &quot;batch_number&quot;: ,&lt;br&gt;  &quot;start_date&quot;: ,&lt;br&gt;  &quot;end_date&quot;: ,&lt;br&gt;  &quot;device_type&quot;: ,&lt;br&gt;  &quot;source&quot;: &lt;br&gt;}&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;用於：流程協調、記錄標註與 recall 發布參數來源&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="g_shared" vertex="1">
+          <mxGeometry x="390" y="100" width="330" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="note_shared" value="LoggingContext 透過 utils.request_context 在同一請求/流程中共享；BatchContext 由流程建立並傳遞至各處理步驟。" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="g_shared" vertex="1">
+          <mxGeometry x="30" y="60" width="700" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,117 @@
+# -------------------------------------------------------------------
+# Google Maps Geo Data Resolver Configuration
+# -------------------------------------------------------------------
+
+# Default values for google_maps_api, using an anchor
+default_google_maps_api: &default_google_maps_api
+  timeout: 30
+  max_retries: 3
+  batch_size: 500
+  base_url: "https://areainsights.googleapis.com"
+  poi_scenarios:
+    corporate_finance: ["corporate_office", "bank", "atm"]
+    residential: ["apartment_building", "apartment_complex", "condominium_complex", "housing_complex"]
+    commercial: ["restaurant", "store", "clothing_store", "shopping_mall", "furniture_store", "supermarket", "car_repair", "car_dealer", "electronics_store", "convenience_store", "jewelry_store", "library", "school", "university", "post_office", "local_government_office"]
+
+# Default values for pubsub, using an anchor
+default_pubsub: &default_pubsub
+  batch_topic: "geo-data-resolver"
+  geo_topic: "geo-data-resolver"
+  anonymization_topic: "anonymization"
+  
+# Default configuration for all other shared settings
+default: &default
+  gcp:
+    location: "us-central1"
+
+  bigquery:
+    raw_vmb_dataset: "RAW_VMB_DATASET"
+    raw_hes_dataset: "RAW_HES_DATASET"
+    trans_hes_dataset: "TRANS_HES_DATASET"
+    raw_edep_dataset: "RAW_EDEP_DATASET"
+    trans_edep_dataset: "TRANS_EDEP_DATASET"
+    log_dataset: "LOG_DATASET"
+    api_dataset: "API_DATASET"
+    vmb_apply_info_table: "APPLY_INFO"
+    hes_customer_table: "CUSTOMER"
+    hes_application_table: "APPLICATION"
+    geo_table: "GEO_DATA"
+    geo_failed_retry_table: "GEO_DATA_FAILED_RETRY_LIST"
+    flow_log_table: "FLOW_LOG"
+    api_log_table: "API_LOG"
+
+  gcs:
+    blob_path: "EDEP/GOOGLEMAPS"
+
+  logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  cloud_run:
+    timeout: 3600
+    batch_processing_enabled: true
+
+# -------------------------------------------------------------------
+# Environment-Specific Configurations
+# -------------------------------------------------------------------
+
+vn-loancloudmvp-data:
+  <<: *default
+  gcp:
+    project_id: "vn-loancloudmvp-data"
+  gcs:
+    bucket_name: "vn-loancloudmvp-data-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "vn-loancloudmvp-data"
+  google_maps_api:
+    <<: *default_google_maps_api
+    qpm_limit: 100
+
+ovs-lx-vdo-01-ut-6869fc:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-ut-6869fc"
+  gcs:
+    bucket_name: "ovslxvdo01-ut-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-ut-6869fc"
+  google_maps_api:
+    <<: *default_google_maps_api
+    secret_version_name: "projects/530891076352/secrets/dskovslxvdo01g09/versions/latest"
+    proxies:
+      https: "http://10.171.21.2:8080"
+    qpm_limit: 1200
+
+ovs-lx-vdo-01-uat-d545f3:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-uat-d545f3"
+  gcs:
+    bucket_name: "ovslxvdo01-uat-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-uat-d545f3"
+  google_maps_api:
+    <<: *default_google_maps_api
+    secret_version_name: "projects/744120031951/secrets/tskovslxvdo01g09/versions/latest"
+    proxies:
+      https: "http://10.171.53.2:8080"
+    qpm_limit: 1200
+
+ovs-lx-vdo-01-prod-d27767:
+  <<: *default
+  gcp:
+    project_id: "ovs-lx-vdo-01-prod-d27767"
+  gcs:
+    bucket_name: "ovslxvdo01-prod-rawdata-api"
+  pubsub:
+    <<: *default_pubsub
+    project_id: "ovs-lx-vdo-01-prod-d27767"
+  google_maps_api:
+    <<: *default_google_maps_api
+    secret_version_name: "projects/600357811838/secrets/pskovslxvdo01g09/versions/latest"
+    proxies:
+      https: "http://10.171.85.2:8080"
+    qpm_limit: 1200

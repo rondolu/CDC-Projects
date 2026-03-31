@@ -1,0 +1,339 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.8" pages="2">
+  <diagram id="GeoDataResolverFlow" name="Geo-Data-Resolver-Flow">
+    <mxGraphModel dx="2881" dy="561" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="light-dark(#FFFFFF,#718769)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_start_daily" style="rounded=0;html=1;endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_start_daily" target="n_handle_daily" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_start_range" style="rounded=0;html=1;endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_start_range" target="n_handle_range" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_handle_daily_process" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_handle_daily" target="n_process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_handle_range_process" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_handle_range" target="n_process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_process_is_range" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_process" target="d_is_range" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_is_range_no" value="Daily" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" parent="1" source="d_is_range" target="n_build_context_daily" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_is_range_yes" value="Range" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" parent="1" source="d_is_range" target="n_build_context_range" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ctx_daily_pre_update" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n_build_context_daily" target="n_pre_update_retry" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ctx_range_pre_update" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n_build_context_range" target="n_pre_update_retry" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pre_update_to_generic" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_pre_update_retry" target="n_generic" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_generic_loader" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_generic" target="n_loader" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loader_batch_records" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_loader" target="n_batch_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_batch_records_loop" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_batch_records" target="n_loop" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loop_single" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_loop" target="n_single_proc" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_single_api_service" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_single_proc" target="n_api_service" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_service_client" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_api_service" target="n_client_call" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_client_call_success_decision" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_client_call" target="d_api_success" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_success_yes" value="2xx" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_api_success" target="n_upload_gcs" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gcs_to_bq" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_upload_gcs" target="n_save_bq" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_api_success_no" value="non-2xx" style="endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" source="d_api_success" target="n_failed_record" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_batch_records_is_last" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="n_batch_records" target="d_is_last" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_is_last_no" value="More batches" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="d_is_last" target="n_publish_recall" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_is_last_yes" value="Last batch" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="1" source="d_is_last" target="n_post_batch" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_publish_recall_to_first_resp" value="Processing" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n_publish_recall" target="n_first_response" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_post_to_retry_load" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_post_batch" target="n_retry_load" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_retry_load_to_retry_proc" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_retry_load" target="n_retry_process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_update_to_flatten" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n_retry_process" target="n_flatten" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="905" y="1875" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_flatten_to_anonym" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_flatten" target="n_anonym" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_anonym_to_final" style="endArrow=block;endFill=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" source="n_anonym" target="n_final_response" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n_start_daily" value="POST /" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="260" y="60" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_start_range" value="POST /get_data_range" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="515" y="60" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_handle_daily" value="handle_daily_request" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="240" y="150" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_handle_range" value="handle_date_range_request" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="495" y="150" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n_process" value="process()" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="400" y="240" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="d_is_range" value="Range?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="405" y="325" width="105" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_build_context_daily" value="Build BatchContext (daily)&#xa;callback_handler = publish_daily_recall" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="95" y="440" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n_build_context_range" value="Build BatchContext (range)&#xa;callback_handler = publish_range_recall" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="532.5" y="440" width="245" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n_pre_update_retry" value="pre-batch: update_failed_retry_status (yesterday)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="345" y="550" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_generic" value="_process_batch_generic" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="370" y="630" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_loader" value="_load_geo_data (SQL)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="355" y="710" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_batch_records" value="_process_batch_records" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="370" y="790" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_loop" value="FOR each record" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;shadow=1;fillColor=light-dark(#B2CCAA,#718769);strokeColor=default;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="390" y="870" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_single_proc" value="loop: get_area_insights per scenario" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="340" y="950" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_api_service" value="GoogleMapsAPIService.get_area_insights" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#f2ab78, #e96b12);strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="320" y="1030" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_client_call" value="GoogleMapsAPIClient.get_places_aggregate" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#f2ab78, #e96b12);strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="305" y="1110" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_api_success" value="2xx?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="407.5" y="1190" width="115" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_upload_gcs" value="_upload_raw_rows_to_gcs" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="175" y="1280" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_save_bq" value="_insert_raw_rows_to_bq (RAW GEO_DATA)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="145" y="1380" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_failed_record" value="insert_failed_record (FAILED_RETRY)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="525" y="1280" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d_is_last" value="Last batch?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="820" y="1330" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_publish_recall" value="PubSubService.publish_*_recall (Pub/Sub)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="470" y="1440" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_first_response" value="Response: processing (non-last batch)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="460" y="1560" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_post_batch" value="post_batch_processing" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="800" y="1500" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_retry_load" value="_load_failed_retry_rows" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="810" y="1590" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_retry_process" value="process failed-retry chunks (_process_batch_records)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=light-dark(#94aa8d, #718769);strokeColor=#3A5431;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="785" y="1700" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_flatten" value="flatten SQL (flatten_geo_data.sql)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+          <mxGeometry x="800" y="1840" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_anonym" value="publish_anonymization (Pub/Sub)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="805" y="1940" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n_final_response" value="Response: completed (final)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="790" y="2110" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="note_batch_size" value="batch_size: config.google_maps_batch_size" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="572.5" y="640" width="290" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note_sql" value="Loader SQL: get_geo_query_data(.sql | _range.sql)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="580" y="720" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note_pubsub" value="Pub/Sub topics: config.pubsub_geo_topic, anonymization_pubsub_topic" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="920" y="2050" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="note_anonym_payload" value="Anonymization payload: file_list = TRANS_EDEP_DATASET.GEO_DATA" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="900" y="2010" width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="note_bq" value="BQ tables: RAW_EDEP_DATASET.GEO_DATA, GEO_DATA_FAILED_RETRY_LIST" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="15" y="1340" width="430" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="g_schema" value="" style="rounded=1;dashed=1;dashPattern=8 8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="940" y="70" width="560" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="t_schema" value="Pub/Sub message schema" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;" parent="g_schema" vertex="1">
+          <mxGeometry x="20" y="10" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_daily" value="daily_recall payload&#xa;{&#xa;  &quot;message_type&quot;: &quot;daily_recall&quot;,&#xa;  &quot;processing_params&quot;: {&#xa;    &quot;batch_number&quot;: &lt;int&gt;,&#xa;    &quot;source&quot;: &quot;daily_job&quot;&#xa;  },&#xa;  &quot;timestamp&quot;: &lt;ISO8601&gt;&#xa;}&#xa;Attributes:&#xa;  start_date: &quot;&quot;&#xa;  end_date: &quot;&quot;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="g_schema" vertex="1">
+          <mxGeometry x="20" y="50" width="250" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_range" value="range_recall payload&#xa;{&#xa;  &quot;message_type&quot;: &quot;range_recall&quot;,&#xa;  &quot;processing_params&quot;: {&#xa;    &quot;batch_number&quot;: &lt;int&gt;,&#xa;    &quot;start_date&quot;: &lt;YYYY-MM-DD&gt;,&#xa;    &quot;end_date&quot;: &lt;YYYY-MM-DD&gt;,&#xa;    &quot;source&quot;: &quot;get_data_range&quot;&#xa;  },&#xa;  &quot;timestamp&quot;: &lt;ISO8601&gt;&#xa;}&#xa;Attributes:&#xa;  start_date: &lt;YYYY-MM-DD&gt;&#xa;  end_date: &lt;YYYY-MM-DD&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="g_schema" vertex="1">
+          <mxGeometry x="290" y="50" width="250" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="g_shared_instances_geo" value="" style="rounded=1;dashed=1;dashPattern=8 8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="940" y="440" width="570" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t_shared_instances_geo" value="Shared Instance Payloads" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontStyle=1;" parent="g_shared_instances_geo" vertex="1">
+          <mxGeometry x="20.357142857142854" y="10" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_batchcontext_geo" value="BatchContext ()&lt;br&gt;{&lt;br&gt;  &quot;batch_number&quot;: ,&lt;br&gt;  &quot;batch_uuid&quot;: ,&lt;br&gt;  &quot;flow_id&quot;: &quot;geo-data-resolver_&quot;,&lt;br&gt;  &quot;start_date&quot;: ,&lt;br&gt;  &quot;end_date&quot;: ,&lt;br&gt;  &quot;source&quot;: ,&lt;br&gt;  &quot;is_last_batch&quot;: &lt;br&gt;}" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="g_shared_instances_geo" vertex="1">
+          <mxGeometry x="20.357142857142854" y="50" width="264.6428571428571" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="schema_logging_geo" value="Logging instance &amp;amp; logs&lt;br&gt;Logging(...): mission_name, log_uuid (UUID_Request), flow_code&lt;div&gt;&lt;br&gt;API_LOG payload:&lt;br&gt;  UUID_Request, API_Type, API_Name, Start_Time, End_Time, Status_Code, Status_Detail, Retry&lt;/div&gt;&lt;div&gt;&lt;br&gt;FLOW_LOG payload:&lt;br&gt;  DATETIME, FLOW_ID, FLOW_NAME, TASK_CODE, TASK_NAME, STATUS, MESSAGE, SEVERITY&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="g_shared_instances_geo" vertex="1">
+          <mxGeometry x="305.35714285714283" y="50" width="244.28571428571428" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="GeoDataResolverSubflows" name="Geo-Data-Resolver-Subflows">
+    <mxGraphModel dx="2881" dy="1761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="sub0" />
+        <mxCell id="sub1" parent="sub0" />
+        <mxCell id="sl_batch" value="A. Batch subflow" style="swimlane;html=1;horizontal=1;rounded=1;shadow=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;" parent="sub1" vertex="1">
+          <mxGeometry x="20" y="20" width="480" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="_process_batch_generic" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#94aa8d;strokeColor=#3A5431;fontColor=#ffffff;" parent="sl_batch" vertex="1">
+          <mxGeometry x="120" y="60" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="_load_geo_data (SQL query)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#94aa8d;strokeColor=#3A5431;fontColor=#ffffff;" parent="sl_batch" vertex="1">
+          <mxGeometry x="120" y="140" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="Initial load empty? (mark last batch)" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_batch" vertex="1">
+          <mxGeometry x="140" y="220" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" value="_process_single_batch" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#94aa8d;strokeColor=#3A5431;fontColor=#ffffff;" parent="sl_batch" vertex="1">
+          <mxGeometry x="120" y="320" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" value="len(data) &lt; batch_size? (is_last_batch)" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_batch" vertex="1">
+          <mxGeometry x="110" y="400" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b6" value="_process_batch_records" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#94aa8d;strokeColor=#3A5431;fontColor=#ffffff;" parent="sl_batch" vertex="1">
+          <mxGeometry x="120" y="480" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b7" value="is_last_batch?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_batch" vertex="1">
+          <mxGeometry x="140" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b8" value="publish_*_recall_message" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="sl_batch" vertex="1">
+          <mxGeometry x="60" y="650" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b9" value="post_batch_processing" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="sl_batch" vertex="1">
+          <mxGeometry x="260" y="650" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b10" value="flatten SQL → anonymization" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="sl_batch" vertex="1">
+          <mxGeometry x="120" y="740" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eb1" style="endArrow=block;endFill=1;" parent="sl_batch" source="b1" target="b2" edge="1" />
+        <mxCell id="eb2" style="endArrow=block;endFill=1;" parent="sl_batch" source="b2" target="b3" edge="1" />
+        <mxCell id="eb3" value="No" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_batch" source="b3" target="b4" edge="1" />
+        <mxCell id="eb4" style="endArrow=block;endFill=1;" parent="sl_batch" source="b4" target="b5" edge="1" />
+        <mxCell id="eb5" value="No" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_batch" source="b5" target="b6" edge="1" />
+        <mxCell id="eb6" style="endArrow=block;endFill=1;" parent="sl_batch" source="b6" target="b7" edge="1" />
+        <mxCell id="eb7" value="No" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_batch" source="b7" target="b8" edge="1" />
+        <mxCell id="eb8" value="Yes" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_batch" source="b7" target="b9" edge="1" />
+        <mxCell id="eb9" style="endArrow=block;endFill=1;" parent="sl_batch" source="b9" target="b10" edge="1" />
+        <mxCell id="sl_record" value="B. Record subflow" style="swimlane;html=1;horizontal=1;rounded=1;shadow=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;" parent="sub1" vertex="1">
+          <mxGeometry x="540" y="20" width="480" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" value="Coordinates available? (may be null)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_record" vertex="1">
+          <mxGeometry x="90" y="60" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" value="FOR scenario in POIScenarioEnum" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;shadow=1;fillColor=#B2CCAA;strokeColor=#3A5431;fontColor=#ffffff;" parent="sl_record" vertex="1">
+          <mxGeometry x="110" y="140" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" value="Service: get_area_insights → Client: get_places_aggregate" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f2ab78;strokeColor=#C73500;" parent="sl_record" vertex="1">
+          <mxGeometry x="60" y="220" width="360" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" value="API success?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_record" vertex="1">
+          <mxGeometry x="160" y="300" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" value="scenario_counts[scenario] = count" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="sl_record" vertex="1">
+          <mxGeometry y="380" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" value="insert_failed_record (Failed Retry)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_record" vertex="1">
+          <mxGeometry x="270" y="380" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" value="Build raw row (prepare_geo_raw_row)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="sl_record" vertex="1">
+          <mxGeometry x="80" y="460" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" value="Upload to GCS (upload_rows_as_json)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="sl_record" vertex="1">
+          <mxGeometry x="80" y="540" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r9" value="Insert to BQ (RAW GEO_DATA)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="sl_record" vertex="1">
+          <mxGeometry x="80" y="620" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="er1" style="endArrow=block;endFill=1;" parent="sl_record" source="r1" target="r2" edge="1" />
+        <mxCell id="er2" style="endArrow=block;endFill=1;" parent="sl_record" source="r2" target="r3" edge="1" />
+        <mxCell id="er3" style="endArrow=block;endFill=1;" parent="sl_record" source="r3" target="r4" edge="1" />
+        <mxCell id="er4" value="Yes" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_record" source="r4" target="r5" edge="1" />
+        <mxCell id="er5" value="No" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_record" source="r4" target="r6" edge="1" />
+        <mxCell id="er6" style="endArrow=block;endFill=1;" parent="sl_record" source="r5" target="r7" edge="1" />
+        <mxCell id="er7" style="endArrow=block;endFill=1;" parent="sl_record" source="r6" target="r7" edge="1" />
+        <mxCell id="er8" style="endArrow=block;endFill=1;" parent="sl_record" source="r7" target="r8" edge="1" />
+        <mxCell id="er9" style="endArrow=block;endFill=1;" parent="sl_record" source="r8" target="r9" edge="1" />
+        <mxCell id="sl_pubsub" value="C. Pub/Sub routing" style="swimlane;html=1;horizontal=1;rounded=1;shadow=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;" parent="sub1" vertex="1">
+          <mxGeometry x="1060" y="20" width="520" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="ps1" value="_is_pubsub_message?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="160" y="60" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ps2" value="_parse_pubsub_message (base64/json)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="120" y="140" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ps3" value="message_type?" style="rhombus;whiteSpace=wrap;html=1;shadow=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="180" y="220" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ps4" value="daily_recall → process_recall_batch(daily)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="60" y="300" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ps5" value="range_recall → process_recall_batch(range)" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="60" y="380" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eps1" value="Yes" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_pubsub" source="ps1" target="ps2" edge="1" />
+        <mxCell id="eps2" style="endArrow=block;endFill=1;" parent="sl_pubsub" source="ps2" target="ps3" edge="1" />
+        <mxCell id="eps3" value="daily_recall" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_pubsub" source="ps3" target="ps4" edge="1" />
+        <mxCell id="eps4" value="range_recall" style="endArrow=block;endFill=1;fontStyle=1;" parent="sl_pubsub" source="ps3" target="ps5" edge="1" />
+        <mxCell id="ps_note_204" value="On success, route returns 204 for Pub/Sub push requests" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;shadow=1;dashed=1;dashPattern=8 8;fontSize=13;" parent="sl_pubsub" vertex="1">
+          <mxGeometry x="60" y="460" width="400" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
